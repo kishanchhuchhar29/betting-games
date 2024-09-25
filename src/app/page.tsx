@@ -1,7 +1,11 @@
 import Image from "next/image";
+import QuickbetHome from "../component/Homepage";
+import './globals.css';
 
 export default function Home() {
   return (
-   <h1 className="text-red-900 ">hello</h1>
+    <>
+   <QuickbetHome/>
+   </>
   );
 }
