@@ -2,12 +2,12 @@
 
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Home,  Tennis,  Disc, User, Globe, ChevronDown, Menu, X, DollarSign, Zap } from 'lucide-react'
+import { Home,  Tennis,  Disc, User, Globe, ChevronDown, Menu, X, DollarSign, Zap, Basketball, Football } from 'lucide-react'
 
 const sports = [
-//   { icon: <Football className="w-6 h-6" />, name: 'Football' },
+  { icon: <Football className="w-6 h-6" />, name: 'Football' },
   { icon: <Tennis className="w-6 h-6" />, name: 'Tennis' },
-//   { icon: <Basketball className="w-6 h-6" />, name: 'Basketball' },
+  { icon: <Basketball className="w-6 h-6" />, name: 'Basketball' },
   { icon: <Disc className="w-6 h-6" />, name: 'Ice hockey' },
   { icon: <Zap className="w-6 h-6" />, name: 'CS2' },
   { icon: <Disc className="w-6 h-6" />, name: 'Dota 2' },
@@ -111,7 +111,7 @@ export default function QuickbetHome() {
           </div>
           <div className="relative">
             <motion.img
-              src="/placeholder.svg?height=400&width=600"
+              src="/football.webp"
               alt="Sports and gaming characters"
               className="rounded-lg shadow-2xl"
               initial={{ opacity: 0, scale: 0.8 }}
@@ -126,16 +126,15 @@ export default function QuickbetHome() {
         <div className="mt-24">
           <h3 className="text-2xl font-semibold mb-6">Popular Categories</h3>
           <div className="grid grid-cols-3 md:grid-cols-6 lg:grid-cols-11 gap-4">
-            {/* {sports.map((sport, index) => (
+            {sports.map((sport, index) => (
               <CategoryCard
                 key={sport.name}
-                icon={sport.icon}
                 name={sport.name}
                 isActive={activeCategory === sport.name}
-                onClick={() => setActiveC+ategory(sport.name)}
+                onClick={() => setActiveCategory(sport.name)}
                 delay={index * 0.1}
               />
-            ))} */}
+            ))}
           </div>
         </div>
 
