@@ -23,8 +23,8 @@ export default function FootballPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 text-white">
-      <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+    <div className="min-h-screen bg-gradient-to-br from-purple-800 via-blue-800 to-indigo-900 text-white text-white">
+      {/* ?<Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} /> */}
 
       <main className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

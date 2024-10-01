@@ -26,8 +26,6 @@ export default function QuickbetHome() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 text-white">
-      <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} setCurrentSport={setCurrentSport} />
-
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div

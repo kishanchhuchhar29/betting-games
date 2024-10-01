@@ -5,19 +5,26 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Home, Disc, ChevronDown, DollarSign, Menu, X, User, Globe } from 'lucide-react'
 
-function DropdownMenu({ setCurrentSport }) {
+function DropdownMenu() {
   return (
-    <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded-md shadow-lg">
+    <div className="absolute right-0 mt-2 w-48 bg-gradient-to-br from-purple-800 via-blue-800 to-indigo-900 text-white text-black rounded-md shadow-lg">
       <ul className="py-2">
-        <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer" onClick={() => setCurrentSport('Football')}>Football</li>
-        <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Cricket</li>
-        <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Tennis</li>
+        <li className="px-4 py-2 transition-colors duration-200 hover:bg-blue-500 hover:text-white cursor-pointer rounded-md">
+          Football
+        </li>
+        <li className="px-4 py-2 transition-colors duration-200 hover:bg-blue-500 hover:text-white cursor-pointer rounded-md">
+          Cricket
+        </li>
+        <li className="px-4 py-2 transition-colors duration-200 hover:bg-blue-500 hover:text-white cursor-pointer rounded-md">
+          Tennis
+        </li>
       </ul>
     </div>
   );
 }
 
-export default function Header({ isMenuOpen, setIsMenuOpen, setCurrentSport }) {
+
+export default function Header() {
   const [showDropdown, setShowDropdown] = useState(false);
 
   const toggleDropdown = () => {
@@ -38,7 +45,7 @@ export default function Header({ isMenuOpen, setIsMenuOpen, setCurrentSport }) {
             <button onClick={toggleDropdown} className="flex items-center space-x-1">
               <NavItem icon={<ChevronDown size={18} />} label="More" />
             </button>
-            {showDropdown && <DropdownMenu setCurrentSport={setCurrentSport} />}
+            {showDropdown && <DropdownMenu />}
           </div>
         </div>
         <div className="flex items-center space-x-4">
@@ -61,9 +68,6 @@ export default function Header({ isMenuOpen, setIsMenuOpen, setCurrentSport }) {
           <User className="h-6 w-6 cursor-pointer" />
           <Globe className="h-6 w-6 cursor-pointer" />
         </div>
-        <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
       </nav>
     </header>
   )

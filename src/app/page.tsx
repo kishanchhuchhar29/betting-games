@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
     {/* <Header /> */}
-   {/* <QuickbetHome/> */}
+   <QuickbetHome/>
    {/* <FootballPage/> */}
    {/* <SpinWheel/> */}
    {/* <CricketBetting/> */}
