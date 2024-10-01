@@ -1,20 +1,29 @@
 // Header.js
-'use client';
+'use client'
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Home, Disc, ChevronDown, User, Globe, DollarSign, Menu, X } from 'lucide-react';
+import React, { useState } from 'react'
+import { motion } from 'framer-motion'
+import { Home, Disc, ChevronDown, DollarSign, Menu, X, User, Globe } from 'lucide-react'
 
-function NavItem({ icon, label }) {
+function DropdownMenu({ setCurrentSport }) {
   return (
-    <a href="#" className="flex items-center space-x-1 text-sm hover:text-purple-400 transition-colors">
-      {icon}
-      <span>{label}</span>
-    </a>
+    <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded-md shadow-lg">
+      <ul className="py-2">
+        <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer" onClick={() => setCurrentSport('Football')}>Football</li>
+        <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Cricket</li>
+        <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Tennis</li>
+      </ul>
+    </div>
   );
 }
 
-function Header({ isMenuOpen, setIsMenuOpen, showDropdown, toggleDropdown, setCurrentSport }) {
+export default function Header({ isMenuOpen, setIsMenuOpen, setCurrentSport }) {
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const toggleDropdown = () => {
+    setShowDropdown(!showDropdown);
+  };
+
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-black/20">
       <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -25,7 +34,6 @@ function Header({ isMenuOpen, setIsMenuOpen, showDropdown, toggleDropdown, setCu
         <div className="hidden md:flex space-x-6">
           <NavItem icon={<Home size={18} />} label="Home" />
           <NavItem icon={<Disc size={18} />} label="Games" />
-
           <div className="relative">
             <button onClick={toggleDropdown} className="flex items-center space-x-1">
               <NavItem icon={<ChevronDown size={18} />} label="More" />
@@ -58,7 +66,14 @@ function Header({ isMenuOpen, setIsMenuOpen, showDropdown, toggleDropdown, setCu
         </button>
       </nav>
     </header>
-  );
+  )
 }
 
-export default Header;
+function NavItem({ icon, label }) {
+  return (
+    <a href="#" className="flex items-center space-x-1 text-sm hover:text-purple-400 transition-colors">
+      {icon}
+      <span>{label}</span>
+    </a>
+  )
+}

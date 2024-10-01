@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Home,  Tennis,  Disc, User, Globe, ChevronDown, Menu, X, DollarSign, Zap, Basketball, Football } from 'lucide-react'
 import FootballPage from './Football'
+import Header from './Header'
 
 const sports = [
   { icon: <Football className="w-6 h-6" />, name: 'Football' },
@@ -12,79 +13,20 @@ const sports = [
   { icon: <Disc className="w-6 h-6" />, name: 'Ice hockey' },
   { icon: <Zap className="w-6 h-6" />, name: 'CS2' },
   { icon: <Disc className="w-6 h-6" />, name: 'Dota 2' },
-//   { icon: <Football className="w-6 h-6" />, name: 'American football' },
   { icon: <Disc className="w-6 h-6" />, name: 'Baseball' },
   { icon: <Disc className="w-6 h-6" />, name: 'MMA' },
   { icon: <Disc className="w-6 h-6" />, name: 'Boxing' },
   { icon: <Zap className="w-6 h-6" />, name: 'Valorant' },
 ]
-function DropdownMenu({setCurrentSport}) {
-  return (
-    <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded-md shadow-lg">
-      <ul className="py-2">
-        <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer" onClick={() => setCurrentSport('Football')}>Football</li>
-        <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Cricket</li>
-        <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Tennis</li>
-      </ul>
-    </div>
-  );
-}
 
 export default function QuickbetHome() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeCategory, setActiveCategory] = useState('Football')
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [currentSport, setCurrentSport] = useState('Football');
-
-  const toggleDropdown = () => {
-    setShowDropdown(!showDropdown);
-  };
+  const [currentSport, setCurrentSport] = useState('Football')
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900 text-white">
-      <header className="sticky top-0 z-50 backdrop-blur-md bg-black/20">
-        <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <h1 className="text-2xl font-bold tracking-tighter">StackX</h1>
-            <span className="bg-blue-500 text-xs px-2 py-1 rounded-full animate-pulse">WEB3 BETTING</span>
-          </div>
-          <div className="hidden md:flex space-x-6">
-            <NavItem icon={<Home size={18} />} label="Home" />
-            {/* <NavItem icon={<Football size={18} />} label="Sports" /> */}
-            <NavItem icon={<Disc size={18} />} label="Games" />
-          
-            <div className="relative">
-              <button onClick={toggleDropdown} className="flex items-center space-x-1">
-                <NavItem icon={<ChevronDown size={18} />} label="More" />
-              </button>
-              {showDropdown && <DropdownMenu setCurrentSport={setCurrentSport} />}
-            </div> 
-             </div>
-          <div className="flex items-center space-x-4">
-            <motion.div
-              className="bg-purple-600 text-white rounded-full px-3 py-1 flex items-center space-x-2"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <DollarSign className="w-4 h-4" />
-              <span className="text-sm font-medium">0.00</span>
-              <span className="text-purple-300 text-xs">+</span>
-            </motion.div>
-            <motion.button
-              className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-medium py-2 px-4 rounded-full text-sm transition-all duration-300"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Connect
-            </motion.button>
-            <User className="h-6 w-6 cursor-pointer" />
-            <Globe className="h-6 w-6 cursor-pointer" />
-          </div>
-          <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
-        </nav>
-      </header>
+      <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} setCurrentSport={setCurrentSport} />
 
       <AnimatePresence>
         {isMenuOpen && (
@@ -96,7 +38,6 @@ export default function QuickbetHome() {
           >
             <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
               <NavItem icon={<Home size={18} />} label="Home" />
-              {/* <NavItem icon={<Football size={18} />} label="Sports" /> */}
               <NavItem icon={<Disc size={18} />} label="Games" />
               <NavItem icon={<ChevronDown size={18} />} label="More" />
             </div>
@@ -105,7 +46,7 @@ export default function QuickbetHome() {
       </AnimatePresence>
 
       <main className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <motion.h2 
               className="text-5xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400"
@@ -189,7 +130,6 @@ function NavItem({ icon, label }) {
     </a>
   )
 }
-
 function CategoryCard({ icon, name, isActive, onClick, delay }) {
   return (
     <motion.div 
